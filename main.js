@@ -199,7 +199,8 @@ function constraints(filePath)
    //console.log(JSON.stringify(syntax, null, 4));
    var result;
    try {
-    result = esprima.parse(buf, options);
+    //result = esprima.parse(buf, options);
+    result = esprima.parse(buf);
    } catch (e) {
     console.log(e.message);
 }
