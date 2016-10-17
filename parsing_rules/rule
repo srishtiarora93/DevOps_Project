@@ -1,2 +1,8 @@
 # coverage less than 90%
-error /Statements   : [1-9][0-9]*/
+error /Statements   : [1-8][0-9]*/
+
+# max statements in function exceeded
+error /max-statements/
+
+# max conditions in an if statement
+error /max-if-conditions/
