@@ -194,16 +194,12 @@ function constraints(filePath)
    console.log(filePath);
    console.log(options);
    var buf = fs.readFileSync(filePath, "utf8");
-   console.log("buf");
+   console.log(buf);
   // var syntax = esprima.parse('var answer = 42',options);
    //console.log(JSON.stringify(syntax, null, 4));
    var result;
-   try {
-    //result = esprima.parse(buf, options);
-    result = esprima.parse(buf);
-   } catch (e) {
-    console.log(e.message);
-}
+   
+    result = esprima.parse(buf, options);
 	
 	console.log("result");
 	traverse(result, function (node) 
