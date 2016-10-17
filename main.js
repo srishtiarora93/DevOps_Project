@@ -194,9 +194,9 @@ function constraints(filePath)
    console.log(filePath);
    console.log(options);
    var buf = fs.readFileSync(filePath, "utf8");
-   console.log(buf);
+   console.log("buf");
 	var result = esprima.parse(buf, options);
-	console.log(result);
+	console.log("result");
 	traverse(result, function (node) 
 	{
 		if (node.type === 'FunctionDeclaration') 
