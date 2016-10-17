@@ -1,11 +1,6 @@
 var esprima = require("esprima");
 var options = {tokens:true, tolerant: true, loc: true, range: true };
-var faker = require("faker");
 var fs = require("fs");
-faker.locale = "en";
-var mock = require('mock-fs');
-var _ = require('underscore');
-var Random = require('random-js');
 
 function main()
 {
@@ -23,16 +18,6 @@ function main()
 	generateTestCases(filePath);
 }
 
-var engine = Random.engines.mt19937().autoSeed();
-
-function createConcreteIntegerValue( greaterThan, constraintValue )
-{
-	if( greaterThan )
-		return Random.integer(constraintValue,constraintValue+10)(engine);
-	else
-		return Random.integer(constraintValue-10,constraintValue)(engine);
-}
-
 function Constraint(properties)
 {
 	this.ident = properties.ident;
@@ -45,45 +30,9 @@ function Constraint(properties)
 	this.kind = properties.kind;
 }
 
-function fakeDemo()
-{
-	console.log( faker.phone.phoneNumber() );
-	console.log( faker.phone.phoneNumberFormat() );
-	console.log( faker.phone.phoneFormats() );
-}
-
 var functionConstraints =
 {
 }
-
-var mockFileLibrary = 
-{
-	pathExists:
-	{
-		'path/fileExists': {}
-	},
-	pathWithFileExists:
-	{
-		'path/fileExists':
-		{
-			file1: '',
-		}
-	},
-	fileWithContent:
-	{
-		pathContent: 
-		{	
-  			file1: 'text content',
-		}
-	},
-	fileWithoutContent:
-	{
-		pathContent: 
-		{	
-  			file1: '',
-		}
-	}
-};
 
 function generateTestCases(filePath)
 {
@@ -138,70 +87,11 @@ function generateTestCases(filePath)
 
 }
 
-function paramPermutations(arr) {
-	
-	if (arr.length == 1) 
-	{
-		return arr[0];
-	} 
-    
-	var result = [];
-    var rest = paramPermutations(arr.slice(1)); 
-    for (var i = 0; i < rest.length; i++) 
-	{
-		for (var j = 0; j < arr[0].length; j++) 
-		{
-			result.push(arr[0][j] +  "," + rest[i]);
-		}
-    }
-    
-	return result;
-}
-
-function generateMockFsTestCases (pathExists, pathWithFileExists, fileWithContent, fileWithoutContent, funcName,args) 
-{
-	var testCase = "";
-	// Build mock file system based on constraints.
-	var mergedFS = {};
-	if( pathWithFileExists )
-	{
-		for (var attrname in mockFileLibrary.pathWithFileExists) { mergedFS[attrname] = mockFileLibrary.pathWithFileExists[attrname]; }
-	} else if( pathExists )
-	{
-		for (var attrname in mockFileLibrary.pathExists) { mergedFS[attrname] = mockFileLibrary.pathExists[attrname]; }
-	}
-	
-	if( fileWithContent )
-	{
-		for (var attrname in mockFileLibrary.fileWithContent) { mergedFS[attrname] = mockFileLibrary.fileWithContent[attrname]; }
-	} else if (fileWithoutContent) {
-		for (var attrname in mockFileLibrary.fileWithoutContent) { mergedFS[attrname] = mockFileLibrary.fileWithoutContent[attrname]; }
-	}
-
-	testCase += 
-	"mock(" +
-		JSON.stringify(mergedFS)
-		+
-	");\n";
-
-	testCase += "\tsubject.{0}({1});\n".format(funcName, args );
-	testCase+="mock.restore();\n";
-	return testCase;
-}
-
 function constraints(filePath)
 {
-   console.log(filePath);
-   console.log(options);
    var buf = fs.readFileSync(filePath, "utf8");
-   console.log(buf);
-  // var syntax = esprima.parse('var answer = 42',options);
-   //console.log(JSON.stringify(syntax, null, 4));
-   var result;
-   
-    result = esprima.parse(buf, options);
-	
-	console.log("result");
+	var result = esprima.parse(buf, options);
+
 	traverse(result, function (node) 
 	{
 		if (node.type === 'FunctionDeclaration') 
