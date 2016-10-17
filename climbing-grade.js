@@ -123,7 +123,6 @@ var ClimbingGrade = (function() {
   return ClimbingGrade;
 })();
 
-
 if (typeof exports === 'undefined') {
   this.ClimbingGrade = ClimbingGrade;
 } else {
