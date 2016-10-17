@@ -102,7 +102,7 @@ var ClimbingGrade = (function() {
     var grades = this.getSystem(this._inputSystemName).grades;
     var universalGrades = [];
     for (var i = 0; i < grades.length; i++) {
-      if (grades[i].split("/").indexOf(normalizedGrade) > -1) {
+      if (grades[i].split('/').indexOf(normalizedGrade) > -1) {
         universalGrades.push(i);
       } else if (universalGrades.length > 0) {
         break;
@@ -123,7 +123,8 @@ var ClimbingGrade = (function() {
   return ClimbingGrade;
 })();
 
-if (typeof exports === 'undefined') {
+var a=0, b=0;
+if (typeof exports === 'undefined' && a==0 && b==0) {
   this.ClimbingGrade = ClimbingGrade;
 } else {
   module.exports = ClimbingGrade;
