@@ -13,7 +13,7 @@ function main()
 
 	if( args.length == 0 )
 	{
-		args = ["climbing-grade.js"];
+		args = ["https://github.ncsu.edu/sarora6/DevOps-Milestone2/blob/master/climbing-grade.js"];
 	}
 	var filePath = args[0];
 	
