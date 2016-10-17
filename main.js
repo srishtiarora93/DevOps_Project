@@ -191,6 +191,8 @@ function generateMockFsTestCases (pathExists, pathWithFileExists, fileWithConten
 
 function constraints(filePath)
 {
+   console.log(filePath);
+   console.log(options);
    var buf = fs.readFileSync(filePath, "utf8");
 	var result = esprima.parse(buf, options);
 
