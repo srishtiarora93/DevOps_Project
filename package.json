@@ -1,14 +1,30 @@
 {
-  "name": "helloworld",
-  "version": "0.0.0",
-  "description": "\"Helloworld HTTP server\"",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "climbing-grade",
+  "version": "1.1.1",
+  "devDependencies" : {
+    "jasmine": "*"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "needle": "^0.7.10"
-  }
+  "description": "converts climbing grades between different systems",
+  "main": "climbing-grade.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grantismo/climbing-grade.js.git"
+  },
+  "keywords": [
+    "rock",
+    "climbing",
+    "grades",
+    "yds",
+    "hueco",
+    "font"
+  ],
+  "author": "Grant Warman <grant.warman@gmail.com> (https://github.com/Grantismo)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Grantismo/climbing-grade.js/issues"
+  },
+  "homepage": "https://github.com/Grantismo/climbing-grade.js"
 }
