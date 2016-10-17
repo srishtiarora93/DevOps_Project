@@ -102,7 +102,7 @@ var ClimbingGrade = (function() {
     var grades = this.getSystem(this._inputSystemName).grades;
     var universalGrades = [];
     for (var i = 0; i < grades.length; i++) {
-      if (grades[i].split('/').indexOf(normalizedGrade) > -1) {
+      if (grades[i].split("/").indexOf(normalizedGrade) > -1) {
         universalGrades.push(i);
       } else if (universalGrades.length > 0) {
         break;
