@@ -41,7 +41,7 @@ var ClimbingGrade = (function() {
     this._universalGrades = this.getUniversalGrades();
   }
 
-  function formatGradeg, system) {
+  function formatGrade(g, system) {
     return system.format ? system.format.call(g) : g;
   }
 
