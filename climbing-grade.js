@@ -59,22 +59,6 @@ var ClimbingGrade = (function() {
     var pairDelimeter = options && options.pairDelimeter ? options.pairDelimeter : this._pairDelimeter;
     var rangeDelimeter = options && options.rangeDelimeter ? options.rangeDelimeter : this._rangeDelimeter;
 
-	var a = 0;
-	
-	if(a == 1){
-		var temp1 = 1;
-		var temp2 = 1;
-		var temp3 = 1;
-		var temp4 = 1;
-		var temp5 = 1;
-		var temp6 = 1;
-		var temp7 = 1;
-		var temp8 = 1;
-		var temp9 = 1;
-		var temp10 = 1;
-		var temp11 = 1;
-	}
-
     var gradeSet = Object.create(null);
     var universalGrades = this.getUniversalGrades();
     var grades = [];
