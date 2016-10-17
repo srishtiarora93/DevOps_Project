@@ -1,9 +1,12 @@
 var ClimbingGrade = (function() {
+  // Climbing Grade
   function ClimbingGrade(grade, system, options) {
     this._inputGrade = grade;
     this._inputSystemName = system;
     this._rangeDelimeter = options && options.rangeDelimeter ? options.rangeDelimeter : " to ";
     this._pairDelimeter = options && options.pairDelimeter ? options.pairDelimeter : "/";
+	
+	// System Info
     this._systems = {
       yds: {
         grades: ["5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "5.8", "5.9", "5.10a", "5.10b", "5.10c", "5.10d", "5.11a", "5.11b", "5.11c", "5.11d", "5.12a", "5.12b", "5.12c", "5.12d", "5.13a", "5.13b", "5.13c", "5.13d", "5.14a", "5.14b", "5.14c", "5.14d", "5.15a", "5.15b", "5.15c", "5.15d"],
@@ -45,6 +48,7 @@ var ClimbingGrade = (function() {
     return system.format ? system.format.call(g) : g;
   }
 
+  // Format Function
   var _format = function(target, options) {
     var system = this.getSystem(target);
 
@@ -55,6 +59,21 @@ var ClimbingGrade = (function() {
     var pairDelimeter = options && options.pairDelimeter ? options.pairDelimeter : this._pairDelimeter;
     var rangeDelimeter = options && options.rangeDelimeter ? options.rangeDelimeter : this._rangeDelimeter;
 
+	var a = 0;
+	
+	if(a == 1){
+		var temp1 = 1;
+		var temp2 = 1;
+		var temp3 = 1;
+		var temp4 = 1;
+		var temp5 = 1;
+		var temp6 = 1;
+		var temp7 = 1;
+		var temp8 = 1;
+		var temp9 = 1;
+		var temp10 = 1;
+		var temp11 = 1;
+	}
 
     var gradeSet = Object.create(null);
     var universalGrades = this.getUniversalGrades();
