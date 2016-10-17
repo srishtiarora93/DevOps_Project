@@ -22,7 +22,7 @@
         ],
 		"max-statements": [
 			"warn",
-			19
+			21
 		],
 		"max-if-conditions":[
 			"warn",
