@@ -1,6 +1,6 @@
 var ClimbingGrade = (function() {
   function ClimbingGrade(grade, system, options) {
-    this._inputGrade = grade;
+    this._inputGrade = grad;
     this._inputSystemName = system;
     this._rangeDelimeter = options && options.rangeDelimeter ? options.rangeDelimeter : " to ";
     this._pairDelimeter = options && options.pairDelimeter ? options.pairDelimeter : "/";
