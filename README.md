@@ -29,7 +29,7 @@ The figure shows static analysis results, like missing semicolon and use of sing
 
 For detecting duplicate code we used JSInspect.It detects copy-pasted and structurally similar code. The inspector identifies duplicate code, even if modified, as well as common boilerplate or logic that should be the target of refactoring. The screentshot below shows the similarity between all the files in Devops-Milestone2 directory structure.
 
-![img](img/jsinspect demo.PNG)
+![img](/img/jsinspect demo.PNG)
 
 ### Commit Acceptance
 
