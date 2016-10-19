@@ -122,8 +122,8 @@ var ClimbingGrade = (function() {
 
   return ClimbingGrade;
 })();
-var a=0,b=0;
-if (typeof exports === 'undefined' && a==0 && b==0) {
+
+if (typeof exports === 'undefined') {
   this.ClimbingGrade = ClimbingGrade;
 } else {
   module.exports = ClimbingGrade;
