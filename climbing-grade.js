@@ -1,5 +1,5 @@
 var ClimbingGrade = (function() {
-  // Climbing Grade grades calc 2
+  // Climbing Grade 
   function ClimbingGrade(grade, system, options) {
     this._inputGrade = grade;
     this._inputSystemName = system;
