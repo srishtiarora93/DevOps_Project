@@ -38,3 +38,5 @@ We've used the Jenkins Log Parser plugin as a post-build task to parse the conso
 ![img](/img/log_parser.PNG)
 
 If the log parser passes with 0 errors, the commit is accepted else the commit it reverted back.
+
+[Link to Screencast Video](https://youtu.be/IwbhFb2Uyt4)
