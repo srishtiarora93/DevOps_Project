@@ -25,6 +25,12 @@ For the code analysis, we've used ESLint for static analysis and extended by cre
 
 The figure shows static analysis results, like missing semicolon and use of single quotes. It also shows the custom rules results, i.e. too many if conditions, function too long, and comment-code line ratio (Free-Style). 
 
+### Detect Duplicate Code
+
+For detecting duplicate code we used JSInspect.It detects copy-pasted and structurally similar code. The inspector identifies duplicate code, even if modified, as well as common boilerplate or logic that should be the target of refactoring. The screentshot below shows the similarity between all the files in Devops-Milestone2 directory structure.
+
+![img](/img/jsinspect demo.PNG)
+
 ### Commit Acceptance
 
 We've used the Jenkins Log Parser plugin as a post-build task to parse the console output based to regex patterns defined in [rule](https://github.ncsu.edu/sarora6/DevOps-Milestone2/blob/master/parsing_rules/rule) file. This would mark the build is failed if any of the rules are matched. We've used the following conditions:
