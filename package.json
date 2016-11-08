@@ -2,7 +2,8 @@
   "name": "climbing-grade",
   "version": "1.1.1",
   "devDependencies" : {
-    "jasmine": "*"
+    "jasmine": "*",
+	"express": "^4.12.3"
   },
   "description": "converts climbing grades between different systems",
   "main": "climbing-grade.js",
