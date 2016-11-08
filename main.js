@@ -4,6 +4,7 @@ var fs = require("fs");
 
 function main()
 {
+	// hello
 	var args = process.argv.slice(2);
 
 	if( args.length == 0 )
