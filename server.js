@@ -18,7 +18,7 @@ app.use(function(req, res, next)
 app.get('/convert/:toScale/:fromScale/:value', function(req, res) {	
 	var grade = new ClimbingGrade(req.params.value, req.params.fromScale);
 	res.send("Scale " + req.params.fromScale + ", value " + req.params.value + " is equivalent to '" 
-		+ grade.format(req.params.toScale) + "' in " + req.params.toScale + " scale.");
+		+ grade.format(req.params.toScale) + "' in " + req.params.toScale + " scale.\n RESPONSE FROM CANARY!!");
 	
 });
 
