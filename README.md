@@ -11,7 +11,7 @@ We are using Data Dog to monitor our application and gather metrics. We are moni
 
 ![img](/img/metrics.png)
 #### Autoscale individual components of production
-
+We have written a Bash script to fetch the memory metric of the container which keep son running every 5 minutes. Whenever the memory usage goes above 50%, then it increases the memory limit by 100Mb.
 
 #### Toggle functionality of a feature using feature flag
 
