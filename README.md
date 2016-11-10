@@ -9,7 +9,7 @@ The production infrastructure and deployment pipeline should support the followi
 #### Monitor the deployed application and send alerts
 We are using Data Dog to monitor our application and gather metrics. We are monitoring CPU utilization and RAM usage. We have set the threshold for CPU utiliation as 60% and for memory usage as 500Mb. Whenever the usage exceed the threshold limit, an e-mail alert is raised. Also if the issue is not resolved within 15 minutes, the e-mail alert is re-triggered.
 
-![img](/img/metric.jpg)
+![img](/img/metrics.png)
 #### Autoscale individual components of production
 
 
