@@ -3,7 +3,7 @@
 The production infrastructure and deployment pipeline should support the following properties,
 
 #### Deploy software to the production environment after build, testing, and analysis stage
-The previous milestone included the ability to trigger a build using Jenkins whenever changes are pushed to git. We are using docker container to deploy our Climbing grade application after the build is successful.
+The previous milestone included the ability to trigger a build using Jenkins whenever changes are pushed to git. We are using docker container to deploy our Climbing grade application after the build is successful. Overall there are three containers running one for each proxy, production and canary.
 
 
 #### Configure a production environment automatically
@@ -16,7 +16,7 @@ We are using Data Dog to monitor our application and gather metrics. We are moni
 
 ![img](/img/metrics.png)
 #### Autoscale individual components of production
-We have written a Bash script to fetch the memory metric of the container which keep son running every 5 minutes. Whenever the memory usage goes above 50%, then it increases the memory limit by 100Mb.
+After the production environment gets deployed, autoscaling feature keeps running in bakground using forever command. We have written a Bash script to fetch the memory metric of the container which keep son running every 5 seconds. Whenever the memory usage goes above 50%, then it increases the memory limit by 100Mb.
 
 #### Toggle functionality of a feature using feature flag
 * We have used a Global Redis Store to maintain the value of feature flag setting. 
