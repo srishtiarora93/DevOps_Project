@@ -5,6 +5,9 @@ The production infrastructure and deployment pipeline should support the followi
 #### Deploy software to the production environment after build, testing, and analysis stage
 
 #### Configure a production environment automatically
+- Configuration management is done mainly using docker. Using the DockerFile the environment gets pre-configured with respect to the requirments. 
+- To install and start redis server, we have written a shell script. 
+
 
 #### Monitor the deployed application and send alerts
 We are using Data Dog to monitor our application and gather metrics. We are monitoring CPU utilization and RAM usage. We have set the threshold for CPU utiliation as 60% and for memory usage as 500Mb. Whenever the usage exceed the threshold limit, an e-mail alert is raised. Also if the issue is not resolved within 15 minutes, the e-mail alert is re-triggered.
