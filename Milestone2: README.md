@@ -1,4 +1,4 @@
-# MILESTONE: TEST+ANALYSIS
+# MILESTONE: TEST and ANALYSIS
 
 The goal of this milestone is to implement a testing component and an analysis component for building a target project.
 For this milestone, we have used the project [Climbing Grade](https://github.com/Grantismo/climbing-grade.js/), which is used to convert different climbing grades between different systems. We've used Jenkins for managing out CI pipeline, which is hosted on a DigitalOcean droplet. 
