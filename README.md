@@ -15,9 +15,9 @@ We have written a Bash script to fetch the memory metric of the container which 
 
 #### Toggle functionality of a feature using feature flag
 * We have used a Global Redis Store to maintain the value of feature flag setting. 
-* Installation command for redis ‘apt-get install redis-server’ .
-* We have created another app, server.js, running at ‘http://localhost:8000’ that would toggle the value of feature flag. This flag value will be accessed in production server by our app to provide access to the functionality of ‘/newfeature’
-* Every request send to ‘http://localhost:8000/newfeature’ would toggle the value of feature flag, thereby enabling and disabling the feature in production.
+* Installation command for redis `apt-get install redis-server` .
+* We have created another app, server.js, running at `http://localhost:8000` that would toggle the value of feature flag. This flag value will be accessed in production server by our app to provide access to the functionality of `/newfeature`
+* Every request send to `http://localhost:8000/newfeature` would toggle the value of feature flag, thereby enabling and disabling the feature in production.
 
 #### Perform a canary release
 We have created a staging branch for canary release. Using proxy server, we are handling request between Production and Staging (Canary). 66% incoming traffic is handled by Production and rest 33% by Staging . If an alert (For example, Error 500) is raised from canary then request are no longer sent to canary.
