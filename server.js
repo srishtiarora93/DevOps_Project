@@ -12,6 +12,13 @@ var client = redis.createClient(6379, '162.243.23.35', {})
 
 app.use(function(req, res, next) 
 {
+	client.get('myflag', function(err,value){
+		if(value == "enable"){
+			app.get('/newfeature', function(req, res) {	
+				res.send("This new feature is available!")
+			});
+		}
+	});
 	next(); // Passing the request to the next handler in the stack.
 });
 
@@ -22,10 +29,3 @@ app.get('/convert/:toScale/:fromScale/:value', function(req, res) {
 	
 });
 
-client.get('myflag', function(err,value){
-	if(value == "enable"){
-		app.get('/newfeature', function(req, res) {	
-			res.send("This new feature is available!")
-		});
-	}
-});
