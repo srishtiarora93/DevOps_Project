@@ -3,6 +3,8 @@
 The production infrastructure and deployment pipeline should support the following properties,
 
 #### Deploy software to the production environment after build, testing, and analysis stage
+The previous milestone included the ability to trigger a build using Jenkins whenever changes are pushed to git. We are using docker container to deploy our Climbing grade application after the build is successful.
+
 
 #### Configure a production environment automatically
 - Configuration management is done mainly using docker. Using the DockerFile the environment gets pre-configured with respect to the requirments. 
