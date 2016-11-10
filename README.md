@@ -16,6 +16,11 @@ We have written a Bash script to fetch the memory metric of the container which 
 #### Toggle functionality of a feature using feature flag
 
 #### Perform a canary release
+We have created a staging branch for canary release. Using proxy server, we are handling request between Production and Staging (Canary). 66% incoming traffic is handled by Production and rest 33% by Staging . If an alert (For example, Error 500) is raised from canary then request are no longer sent to canary.
+
+
+
+
 
 
 
