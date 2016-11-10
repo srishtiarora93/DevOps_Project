@@ -18,7 +18,7 @@ then
         newLimit=$((limitMB + 100))M
         docker stop $containerId
         docker rm $containerId
-        docker run -p 50101:8000 -m $newLimit --oom-kill-disable -d server
+        docker run -p 50101:8000 -m $newLimit --oom-kill-disable -d server_canary
         echo $newLimit
 fi
 
