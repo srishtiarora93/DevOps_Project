@@ -1,4 +1,4 @@
-# DevOps-Milestone3: Deployment
+# DevOps_Project: Deployment
 
 The production infrastructure and deployment pipeline should support the following properties,
 
