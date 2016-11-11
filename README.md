@@ -28,6 +28,7 @@ After the production environment gets deployed, autoscaling feature keeps runnin
 #### Perform a canary release
 We have created a staging branch for canary release. Using proxy server, we are handling request between Production and Staging (Canary). 66% incoming traffic is handled by Production and rest 33% by Staging . If an alert (For example, Error 500) is raised from canary then request are no longer sent to canary.
 
+[Link to Screencast Video](https://youtu.be/sISmvgLKzUY)
 
 
 
