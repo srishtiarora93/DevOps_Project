@@ -10,6 +10,3 @@ cd src
 ./redis-server --daemonize yes
 
 redis-cli CONFIG SET protected-mode no
-
-
-
