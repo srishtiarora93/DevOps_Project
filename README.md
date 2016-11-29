@@ -1,4 +1,4 @@
-# DevOps_Project: Deployment1
+# DevOps_Project: Deployment
 
 The production infrastructure and deployment pipeline should support the following properties,
 
