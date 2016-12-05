@@ -1,34 +1,34 @@
-# DevOps_Project: Deployment
+# DevOps Project
 
-The production infrastructure and deployment pipeline should support the following properties,
+We've used the climbing grade project in our pipeline which includes build, test, analysis, deployment and monitoring. Link to previous milestones:
 
-#### Deploy software to the production environment after build, testing, and analysis stage
-The previous milestone included the ability to trigger a build using Jenkins whenever changes are pushed to git. We are using docker container to deploy our Climbing grade application after the build is successful. Overall there are three containers running one for each proxy, production and canary.
+* [M1: Build](https://github.ncsu.edu/ckapadi/devops-project/blob/master/README.md)
+* [M2: Test and Analysis](https://github.ncsu.edu/sarora6/DevOps_Project/blob/master/Milestone2:%20README.md)
+* [M3: Deployment](https://github.ncsu.edu/sarora6/DevOps_Project/blob/master/Milestone3_README.md)
 
+## Special Milestone
 
-#### Configure a production environment automatically
-- Configuration management is done mainly using docker. Using the DockerFile the environment gets pre-configured with respect to the requirments. 
-- To install and start redis server, we have written a shell script. 
+For the purpose of the special milestone, we implemented the combination of two monkeys, Diet Monkey and Trainer Monkey. Since we have used docker containers to run our web servers, the monkeys try to fiddle with the resources allotted and stress with heavy http load to the container.
 
+### Diet Monkey
 
-#### Monitor the deployed application and send alerts
-We are using Data Dog to monitor our application and gather metrics. We are monitoring CPU utilization and RAM usage. We have set the threshold for CPU utiliation as 60% and for memory usage as 500Mb. Whenever the usage exceed the threshold limit, an e-mail alert is raised. Also if the issue is not resolved within 15 minutes, the e-mail alert is re-triggered.
+The diet monkey tries to shrink the memory allocated to the container hosting the webserver. So everytime the monkey script is run, the memory allocated to the container is reduced to half.
 
-![img](/img/metrics.png)
-#### Autoscale individual components of production
-After the production environment gets deployed, autoscaling feature keeps running in bakground using forever command. We have written a Bash script to fetch the memory metric of the container which keep son running every 5 seconds. Whenever the memory usage goes above 50%, then it increases the memory limit by 100Mb.
+### Trainer Monkey
 
-#### Toggle functionality of a feature using feature flag
-* We have used a Global Redis Store to maintain the value of feature flag setting. 
-* We have a [script](https://github.ncsu.edu/sarora6/DevOps_Project/blob/master/start_redis.sh) to install, confugure and start redis server.
-* We have created another app, server.js, running at `http://localhost:8000` that would toggle the value of feature flag. This flag value will be accessed in production server by our app to provide access to the functionality of `/newfeature`.
-* The value of `myflag` is toggled to achieve toggle functionality. Only when the value of `myflag` is `enable`, the `/newfeature` is available.
-* Every request send to `http://localhost:8000/newfeature` would toggle the value of feature flag, thereby enabling and disabling the feature in production.
+The trainer monkey tries to put concurrent http stress on the webserver. For this we've used the `node-stress` library and tried stressing the container with 1000 concurrent http requests.
 
-#### Perform a canary release
-We have created a staging branch for canary release. Using proxy server, we are handling request between Production and Staging (Canary). 66% incoming traffic is handled by Production and rest 33% by Staging . If an alert (For example, Error 500) is raised from canary then request are no longer sent to canary.
+### Combined Effect
 
-[Link to Screencast Video](https://youtu.be/sISmvgLKzUY)
+For this milestone, we created a node file [run_monkey.js](https://github.ncsu.edu/sarora6/DevOps_Project/blob/master/monkey/run_monkey.js) while runs both the monkeys, diet and trainer in the same order to test the system and report failures. By default, we allocated 200MB to our webserver for running and the usual usage is around 30-40MB. Firstly, the diet monkey runs, finds the memory allocated to the webserver container and reduces it to half i.e. 100MB. Next, the trainer monkey tries to put concurrent http load of 1000 requests on the shrinker webserver container. This increases the usage to amost 80-90% (80-90MB) thereby triggerring the autoscale script. The autoscale script then checks the usage is more than 50% and adds 100MB to the container, thereby making it 200MB again. If both the monkeys and the autoscale script run successfully, this is how the output looks like:
+
+![img](/img/monkey.PNG)
+
+This shows us the container stats on the LHS and the output of the monkey on the RHS. The output of the monkey shows that firstly the memory is reduced to 100M and then the results of the http stress test. It shows that all the requests were 'ok' and the test is passed. 
+
+To integrate this monkey with our pipeline, whenever a commit is made to the repo, this monkey is run as the final step of the post-build task. This allows us to report the results for the test in each build log, as well as report the failures caused by the monkey.
+
+[Link to Screencast Video](https://youtu.be/uOWwPq7DWKs)
 
 
 
