@@ -16,7 +16,7 @@ The diet monkey tries to shrink the memory allocated to the container hosting th
 
 ### Trainer Monkey
 
-The trainer monkey tries to put concurrent http stress on the webserver. For this we've used the `node-stress` library and tried stressing the container with 500 concurrent http requests.
+The trainer monkey tries to put concurrent http stress on the webserver. For this we've used the `stress-node` library and tried stressing the container with 500 concurrent http requests.
 
 ### Combined Effect
 
